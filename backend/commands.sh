@@ -5,4 +5,3 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py createsuperuser 
 -> admin@example.com -> pass1234
--> kevin@testingsupergood.com  -> pass1234
