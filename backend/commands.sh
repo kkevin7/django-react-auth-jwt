@@ -1,4 +1,4 @@
-pip install django djangorestframework django-cors-headers djangorestframework-simplejwt pyjwt django-environ python-dotenv djoser markdown django-filter 
+pip install django djangorestframework django-cors-headers djangorestframework-simplejwt djoser pyjwt django-environ python-dotenv markdown django-filter 
 
 
 python manage.py makemigrations
