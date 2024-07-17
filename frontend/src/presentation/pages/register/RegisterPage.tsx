@@ -1,9 +1,9 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 //images
-import logoImg from "../../../../images/galaxy.png";
+import logoImg from "../../../images/galaxy.png";
 
-const Register = () => {
+const RegisterPage = () => {
   const navigate = useNavigate();
 
   const handleRegister = () => {
@@ -122,4 +122,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default RegisterPage;

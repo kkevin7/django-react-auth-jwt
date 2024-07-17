@@ -1,9 +1,9 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 //images
-import logoImg from "../../../../images/galaxy.png";
+import logoImg from "../../../images/galaxy.png";
 
-const Login = () => {
+const LoginPage = () => {
   const navigate = useNavigate();
 
   const handleLogIn = () => {
@@ -108,4 +108,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginPage;
