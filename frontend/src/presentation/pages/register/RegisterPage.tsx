@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { register } from "../../../features/auth/authSlice";
 //images
 import logoImg from "../../../images/galaxy.png";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
     first_name: "",
@@ -16,6 +19,10 @@ const RegisterPage = () => {
 
   const { first_name, last_name, email, password, re_password } = formData;
 
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
+
   const handleChange = (e) => {
     setFormData((prev) => ({
       ...prev,
@@ -25,11 +32,21 @@ const RegisterPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const userData = {
+      first_name,
+      last_name,
+      email,
+      password,
+      re_password,
+    };
+
+    dispatch(register(userData));
   };
 
-  const handleRegister = () => {
-    navigate("/");
-  };
+  // const handleRegister = () => {
+  //   navigate("/");
+  // };
 
   return (
     <section className="bg-gray-50 dark:bg-gray-900">
@@ -45,7 +62,7 @@ const RegisterPage = () => {
             <h1 className="text-xl font-bold leading-tight tracking-tight text-center text-gray-900 md:text-2xl dark:text-white">
               Create an account
             </h1>
-            <form className="space-y-4 md:space-y-6" action="#">
+            <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label
                   htmlFor="email"
@@ -107,7 +124,6 @@ const RegisterPage = () => {
                 <input
                   type="password"
                   name="password"
-                  id="password"
                   placeholder="••••••••"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   onChange={handleChange}
@@ -124,8 +140,7 @@ const RegisterPage = () => {
                 </label>
                 <input
                   type="confirm-password"
-                  name="confirm-password"
-                  id="confirm-password"
+                  name="re_password"
                   placeholder="••••••••"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   onChange={handleChange}
@@ -161,7 +176,6 @@ const RegisterPage = () => {
               <button
                 type="submit"
                 className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-                onClick={handleRegister}
               >
                 Create an account
               </button>
