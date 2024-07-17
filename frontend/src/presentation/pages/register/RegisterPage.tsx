@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../../features/auth/authSlice";
@@ -22,6 +22,12 @@ const RegisterPage = () => {
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
   );
+
+  useEffect(() => {
+    if (isSuccess || user) {
+      navigate("/");
+    }
+  });
 
   const handleChange = (e) => {
     setFormData((prev) => ({

@@ -30,23 +30,23 @@ axiosIns.interceptors.request.use((config) => {
   return config;
 });
 
-// ℹ️ Add response interceptor to handle 401 response
-axiosIns.interceptors.response.use(
-  (response) => {
-    return response;
-  },
-  (error) => {
-    console.log(error);
-    // Handle error
-    if (error.response) {
-      if (error.response.status === 401) {
+// // ℹ️ Add response interceptor to handle 401 response
+// axiosIns.interceptors.response.use(
+//   (response) => {
+//     return response;
+//   },
+//   (error) => {
+//     console.log(error);
+//     // Handle error
+//     if (error.response) {
+//       if (error.response.status === 401) {
        
-      } else {
-        return Promise.reject(error);
-      }
-    }
-    console.log(error);
-  }
-);
+//       } else {
+//         return Promise.reject(error);
+//       }
+//     }
+//     console.log(error);
+//   }
+// );
 
 export default axiosIns;
